@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff7d8">
+  <meta name="description" content="Mix, match, and save your dream looks in Clueless Closet, your very own digital wardrobe.">
+  <title>Clueless Closet — your digital wardrobe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Clueless Closet home">
+      <span class="brand-mark" aria-hidden="true">CC</span>
+      <span>clueless <em>closet</em></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#closet">My Closet</a>
+      <a href="#generator">Outfit Generator</a>
+      <a href="#saved">Saved Outfits <span class="saved-count" id="saved-count">0</span></a>
+    </nav>
+    <a class="header-cta" href="#generator">Get dressed <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> YOUR VERY OWN DIGITAL WARDROBE</p>
+        <h1>Good outfits.<br><span>Zero guesswork.</span></h1>
+        <p class="hero-subtitle">As if! You'll never have nothing to wear again.</p>
+        <div class="hero-actions">
+          <button class="button button-dark" id="hero-generate">Generate My Outfit <span aria-hidden="true">↗</span></button>
+          <a class="text-link" href="#closet">Explore the closet <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-note"><span class="sparkle" aria-hidden="true">✳</span> Made for outfit repeat offenders &amp; closet romantics</div>
+      </div>
+
+      <div class="hero-art" aria-label="Featured outfit preview">
+        <div class="hero-art-topline"><span>LOOK NO. <span id="hero-look-number">01</span></span><span class="live-label">● LIVE LOOK</span></div>
+        <div class="hero-image-frame">
+          <img id="hero-image" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Model wearing a chic preppy outfit">
+          <div class="image-fallback" aria-hidden="true">👗</div>
+          <div class="hero-sticker">the<br><strong>look</strong><br>of the day</div>
+        </div>
+        <div class="hero-look-caption">
+          <div><span class="caption-label">CURRENT MOOD</span><strong id="hero-look-name">The Hallway Icon</strong></div>
+          <span class="look-arrows" aria-hidden="true">↗ ↘</span>
+        </div>
+        <div class="hero-art-bottom"><span>PREPPY, WITH A TWIST</span><span>EST. 1995</span></div>
+      </div>
+      <div class="hero-floating-note note-one">100% outfit approved <span>♡</span></div>
+      <div class="hero-floating-note note-two">no bad fit days</div>
+    </section>
+
+    <section class="ticker" aria-label="Style motto">
+      <div class="ticker-track"><span>STYLE IS A STATE OF MIND</span><i>✳</i><span>YOUR CLOSET, YOUR RULES</span><i>✳</i><span>STYLE IS A STATE OF MIND</span><i>✳</i><span>YOUR CLOSET, YOUR RULES</span><i>✳</i></div>
+    </section>
+
+    <section class="generator-section section-wrap" id="generator">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / THE OUTFIT MACHINE</p><h2>Dress me, <em>please.</em></h2></div>
+        <p class="section-description">Tell us the vibe. We’ll do the matching.<br><span>One click closer to your main-character moment.</span></p>
+      </div>
+
+      <div class="generator-panel">
+        <aside class="generator-controls">
+          <div class="control-heading"><span class="tiny-sparkle">✳</span><div><strong>THE VIBE CHECK</strong><small>Set your outfit parameters</small></div></div>
+          <label class="field-label" for="style-select">I'M FEELING</label>
+          <select id="style-select">
+            <option value="preppy">Clueless / 90s preppy</option>
+            <option value="grunge">Grunge</option>
+            <option value="coquette">Coquette</option>
+            <option value="goth">Goth</option>
+            <option value="casual">Casual</option>
+            <option value="old-money">Old money</option>
+            <option value="y2k">Y2K</option>
+          </select>
+          <label class="field-label" for="occasion-select">DRESSING FOR</label>
+          <select id="occasion-select">
+            <option value="everyday">Everyday</option>
+            <option value="school">School</option>
+            <option value="party">Party</option>
+            <option value="date">Date</option>
+            <option value="formal">Formal event</option>
+          </select>
+          <button class="button button-dark generate-button" id="generate-button">Generate my outfit <span aria-hidden="true">✳</span></button>
+          <p class="control-footnote">A little bit of luck, a whole lot of style.</p>
+        </aside>
+
+        <div class="outfit-stage" id="outfit-stage">
+          <div class="stage-topline"><span><span class="status-dot"></span> YOUR OUTFIT, YOUR RULES</span><span class="mono" id="look-counter">LOOK 001</span></div>
+          <div class="outfit-empty" id="outfit-empty">
+            <div class="empty-hanger" aria-hidden="true">♡</div>
+            <h3>Your next favorite outfit<br>is one click away.</h3>
+            <p>Pick your vibe and let the closet work its magic.</p>
+          </div>
+          <div class="outfit-items" id="outfit-items" aria-live="polite"></div>
+          <div class="stage-bottomline"><span id="outfit-summary">WAITING FOR A LITTLE OUTFIT MAGIC…</span><button class="text-button" id="surprise-button">Surprise me <span aria-hidden="true">↗</span></button></div>
+        </div>
+
+        <aside class="outfit-actions">
+          <span class="action-label">THE FINAL LOOK</span>
+          <div class="action-preview" id="action-preview"><span aria-hidden="true">✳</span></div>
+          <p class="action-title" id="action-title">Not dressed yet</p>
+          <p class="action-hint" id="action-hint">Your outfit will appear right here.</p>
+          <button class="button button-red" id="save-button" disabled>♡ &nbsp; Save this outfit</button>
+          <button class="button button-outline" id="clear-button">Clear outfit</button>
+          <p class="save-note">Saved looks stay in your closet<br>even after you log off.</p>
+        </aside>
+      </div>
+      <p class="mobile-tip">Tip: tap any closet piece to add it to your outfit. Use ↻ to swap it out.</p>
+    </section>
+
+    <section class="closet-section section-wrap" id="closet">
+      <div class="section-heading closet-heading">
+        <div><p class="eyebrow">02 / THE GOOD STUFF</p><h2>Welcome to your <em>closet.</em></h2></div>
+        <p class="section-description">A little something for every version of you.<br><span>Tap any piece to add it to your outfit.</span></p>
+      </div>
+      <div class="closet-toolbar">
+        <div class="filter-list" id="category-filters" aria-label="Filter wardrobe by category"></div>
+        <span class="item-total" id="item-total">0 PIECES</span>
+      </div>
+      <div class="wardrobe-grid" id="wardrobe-grid"></div>
+      <div class="closet-footer"><span>THAT'S THE WHOLE CLOSET (FOR NOW)</span><span>CURATED WITH ♡</span></div>
+    </section>
+
+    <section class="saved-section section-wrap" id="saved">
+      <div class="section-heading">
+        <div><p class="eyebrow">03 / YOUR LITTLE BLACK BOOK</p><h2>Saved with <em>love.</em></h2></div>
+        <p class="section-description">All your can’t-stop-thinking-about-it looks.<br><span>Good taste deserves to be remembered.</span></p>
+      </div>
+      <div class="saved-grid" id="saved-grid"></div>
+      <div class="saved-empty" id="saved-empty"><span aria-hidden="true">♡</span><p>No saved looks yet. When an outfit feels like <em>the one</em>, save it here.</p><a href="#generator">Make a look worth keeping ↗</a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">CC</span><span>clueless <em>closet</em></span></a>
+    <span>THE CLOSET OF YOUR DREAMS, NO CREDIT CARD REQUIRED.</span>
+    <a href="#home">BACK TO TOP ↑</a>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
